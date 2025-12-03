@@ -8,8 +8,10 @@ const WebsiteLayout: React.FC = () => {
 
   const navigation = [
     { name: 'Home', href: '/' },
+    { name: 'Home V2', href: '/v2' },
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
+    { name: 'Photography Services', href: '/services/photography' },
     { name: 'Events', href: '/events' },
     { name: 'Directory', href: '/directory' },
   ];
@@ -27,7 +29,7 @@ const WebsiteLayout: React.FC = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-12">
+            <nav className="hidden xl:flex space-x-8">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -43,6 +45,24 @@ const WebsiteLayout: React.FC = () => {
               ))}
             </nav>
 
+             {/* Tablet/Desktop Condensed Navigation (for smaller screens) */}
+             <nav className="hidden md:flex xl:hidden space-x-6">
+              {navigation.slice(0, 4).map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className={`text-xs font-bold uppercase tracking-widest transition-colors ${
+                    location.pathname === item.href
+                      ? 'text-black'
+                      : 'text-gray-400 hover:text-black'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              {/* Dropdown or More could go here, but for now we just show core items */}
+            </nav>
+
             {/* CTA & Mobile Menu Button */}
             <div className="flex items-center gap-6">
               <Link to="/start-project" className="hidden lg:block px-8 py-3 text-xs font-bold uppercase tracking-widest text-white bg-black hover:bg-gray-800 transition-colors">
@@ -52,7 +72,7 @@ const WebsiteLayout: React.FC = () => {
                 Log In
               </Link>
               <button
-                className="md:hidden p-2 text-gray-500"
+                className="xl:hidden p-2 text-gray-500"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -63,7 +83,7 @@ const WebsiteLayout: React.FC = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white border-b border-gray-100 absolute w-full h-screen z-50">
+          <div className="xl:hidden bg-white border-b border-gray-100 absolute w-full h-screen z-50 overflow-y-auto pb-20">
             <div className="px-6 pt-8 pb-6 space-y-4">
               {navigation.map((item) => (
                 <Link
@@ -133,7 +153,7 @@ const WebsiteLayout: React.FC = () => {
               <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-8">Services</h3>
               <ul className="space-y-4">
                 <li><Link to="/services" className="text-sm font-medium text-gray-600 hover:text-black transition-colors">All Services</Link></li>
-                <li><Link to="/services/photography" className="text-sm font-medium text-gray-600 hover:text-black transition-colors">Photography</Link></li>
+                <li><Link to="/services/photography" className="text-sm font-medium text-gray-600 hover:text-black transition-colors">Photography Services</Link></li>
                 <li><Link to="/marketplace" className="text-sm font-medium text-gray-600 hover:text-black transition-colors">Marketplace</Link></li>
                 <li><Link to="#" className="text-sm font-medium text-gray-600 hover:text-black transition-colors">Legal & Privacy</Link></li>
               </ul>
