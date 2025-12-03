@@ -79,11 +79,10 @@ export default function App() {
           <Route path="events" element={<GlobalEventsPage />} />
 
           {/* Event Context (Nested) */}
-          {/* The Sidebar detects this path pattern to switch menus */}
           <Route path="events/:id" element={<EventDashboard />} />
           <Route path="events/:id/timeline" element={<EventTimelinePage />} />
           <Route path="events/:id/logistics" element={<EventLogisticsPage />} />
-          <Route path="events/:id/sponsors" element={<SponsorsPage />} /> {/* Reusing component for now */}
+          <Route path="events/:id/sponsors" element={<SponsorsPage />} />
           <Route path="events/:id/casting" element={<PlaceholderPage title="Casting" section="Dashboard" />} />
         </Route>
 

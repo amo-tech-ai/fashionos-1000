@@ -45,7 +45,7 @@ const WebsiteLayout: React.FC = () => {
               ))}
             </nav>
 
-             {/* Tablet/Desktop Condensed Navigation (for smaller screens) */}
+             {/* Tablet/Desktop Condensed Navigation */}
              <nav className="hidden md:flex xl:hidden space-x-6">
               {navigation.slice(0, 4).map((item) => (
                 <Link
@@ -60,7 +60,6 @@ const WebsiteLayout: React.FC = () => {
                   {item.name}
                 </Link>
               ))}
-              {/* Dropdown or More could go here, but for now we just show core items */}
             </nav>
 
             {/* CTA & Mobile Menu Button */}
